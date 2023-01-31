@@ -1,0 +1,45 @@
+#root {
+  width: 100%;
+  min-width: 20em;
+  max-width: 90em;
+  height: 100%;
+  min-height: 100vh;
+  margin-inline: auto;
+}
+
+footer {
+  width: 100%;
+  height: auto;
+  position: fixed;
+  padding: 0.2em 0.5em;
+  left: 0;
+  bottom: 0;
+  font-size: 0.7em;
+  pointer-events: none;
+  transition: all 0.125s linear;
+  z-index: 2;
+}
+
+footer svg[data-icon="heart"] {
+  color: var(--heart-red);
+}
+
+footer a[href="https://github.com/purrrplelipton"]
+{
+  text-decoration: none;
+  padding: 0.05em 0.125em;
+  color: inherit;
+  border-bottom: 1px solid var(--bright);
+  pointer-events: initial;
+}
+
+footer a[href="https://github.com/purrrplelipton"]:hover
+{
+  border-color: var(--dark);
+}
+
+footer a[href="https://github.com/purrrplelipton"]:is(:focus, :focus-visible, :focus-within)
+{
+  outline: 1px solid var(--bright);
+  outline-offset: -1px;
+}

@@ -1,0 +1,16 @@
+.modal {
+  position: fixed;
+  z-index: 2;
+  background: var(--dark);
+  color: var(--bright);
+  width: 65%;
+  height: 100%;
+  box-shadow: 1px 0 4px rgba(255, 255, 255, 0.4);
+  top: 0;
+  left: 0;
+}
+
+.hide-modal {
+  transform: translateX(-100%);
+  opacity: 0;
+}
