@@ -33,11 +33,11 @@ const Toolbar = ({ toggleMenu }: { toggleMenu: Function }) => {
             <Logo />
           </li>
         </ul>
-        <label htmlFor={"search"}>
+        <label htmlFor={"search"} className={style.middleSearchbar}>
           <input
             type={"search"}
             name={"search"}
-            id={"_search"}
+            id={"centre-searchbar"}
             placeholder={"Search notes..."}
           />
           <NavBtn
@@ -48,7 +48,7 @@ const Toolbar = ({ toggleMenu }: { toggleMenu: Function }) => {
           >
             <FontAwesomeIcon icon={faArrowLeft} />
           </NavBtn>
-        </label>{" "}
+        </label>
         <nav>
           <NavigationItems />
         </nav>

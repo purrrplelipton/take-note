@@ -1,8 +1,5 @@
-/* .navigation-items li {} */
-
-.navigation-items li:has(label[for="search"]) {
+.navigation-items li {
   position: relative;
-  height: fit-content;
 }
 
 .navigation-items li .search-label {
@@ -101,7 +98,7 @@
     li
     label
     input[type="search"]
-    + button:has(svg[data-icon="arrow-left"]) {
+    + button[data-tooltip-text="exit note search"] {
     color: hsla(0, 0%, 100%, 0.525);
   }
 
@@ -109,7 +106,7 @@
     li
     label
     input[type="search"]
-    + button:has(svg[data-icon="arrow-left"]):hover {
+    + button[data-tooltip-text="exit note search"]:hover {
     border-color: hsla(0, 0%, 100%, 0.525);
     background: hsla(0, 0%, 100%, 0.15);
   }
@@ -118,7 +115,7 @@
     li
     label
     input[type="search"]
-    + button:has(svg[data-icon="arrow-left"]):is(
+    + button[data-tooltip-text="exit note search"]:is(
       :focus,
       :focus-visible,
       :focus-within
@@ -130,7 +127,7 @@
     li
     label
     input[type="search"]
-    + button:has(svg[data-icon="arrow-left"]):is(
+    + button[data-tooltip-text="exit note search"]:is(
       :focus,
       :focus-visible,
       :focus-within,

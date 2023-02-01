@@ -26,16 +26,15 @@ footer svg[data-icon="heart"] {
 
 footer a[href="https://github.com/purrrplelipton"]
 {
-  text-decoration: none;
-  padding: 0.05em 0.125em;
+  /* font-family: var(--sec-ff); */
+  text-decoration: solid line-through;
   color: inherit;
-  border-bottom: 1px solid var(--bright);
   pointer-events: initial;
 }
 
 footer a[href="https://github.com/purrrplelipton"]:hover
 {
-  border-color: var(--dark);
+  text-decoration: solid underline;
 }
 
 footer a[href="https://github.com/purrrplelipton"]:is(:focus, :focus-visible, :focus-within)

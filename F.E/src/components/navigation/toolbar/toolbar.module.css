@@ -7,7 +7,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 0.4em;
-  background: var(--dark);
+  /* background: var(--dark); */
   box-shadow: 0 1px 2px hsla(0, 0%, 100%, 0.65);
   z-index: 4;
 }
@@ -23,6 +23,7 @@
   outline: none;
   text-decoration: none;
   color: inherit;
+  /* font-family: var(--sec-ff); */
   font-size: 0.9em;
   font-weight: 500;
   display: flex;
@@ -58,6 +59,62 @@
   opacity: 1;
 }
 
+.middle-searchbar {
+  position: relative;
+}
+
+.middle-searchbar input[type="search"] {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  background: var(--bright);
+  color: var(--dark);
+  border: 1px solid hsla(248, 53%, 58%, 0.45);
+  border-radius: 8px;
+  padding: 0.3em;
+  padding-left: 2.2em;
+  padding-bottom: 0.4em;
+}
+
+.middle-searchbar
+  input[type="search"]:is(:focus, :focus-visible, :focus-within) {
+  border-color: hsla(248, 53%, 58%, 0.87);
+}
+
+.middle-searchbar input[type="search"]::placeholder {
+  color: hsla(0, 0%, 0%, 0.525);
+  text-shadow: 0 0 1px hsla(0, 0%, 0%, 0.15), 0 0 1px hsla(0, 0%, 0%, 0.15);
+}
+
+.middle-searchbar button[data-tooltip-text="exit note search"] {
+  background: transparent;
+  border: 1px solid transparent;
+  height: calc(100% - 2px);
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 2px;
+  transform: translate(0, -50%);
+  color: hsla(0, 0%, 0%, 0.525);
+  outline: none;
+  transition: border-color 0.125s linear, background 0.15s ease-in-out,
+    color 0.12s linear;
+}
+
+.middle-searchbar button:hover {
+  border-color: hsla(0, 0%, 0%, 0.525);
+  background: hsla(0, 0%, 0%, 0.15);
+}
+
+.middle-searchbar button:is(:focus, :focus-visible, :focus-within) {
+  border-color: hsla(0, 0%, 0%, 0.75);
+}
+
+.middle-searchbar button:is(:focus, :focus-visible, :focus-within, :active) {
+  color: hsla(0, 0%, 0%, 0.75);
+}
+
 .toolbar ul li button {
   outline: none;
   background: transparent;
@@ -85,7 +142,7 @@
 
 @media (prefers-color-scheme: light) {
   .toolbar {
-    background: var(--bright);
+    /* background: var(--bright); */
     box-shadow: 0 0 2px hsla(0, 0%, 0%, 0.65);
   }
 
@@ -118,10 +175,52 @@
   .toolbar ul li button:is(:focus, :focus-visible, :focus-within, :active) {
     color: hsla(0, 0%, 0%, 0.8);
   }
+  .middle-searchbar input[type="search"] {
+    background: var(--dark);
+    color: var(--bright);
+  }
+
+  .middle-searchbar input[type="search"]::placeholder {
+    color: hsla(0, 0%, 100%, 0.6);
+    text-shadow: 0 0 1px hsla(0, 0%, 100%, 0.4), 0 0 1px hsla(0, 0%, 100%, 0.4);
+  }
+
+  .middle-searchbar
+    input[type="search"]:is(:focus, :focus-visible, :focus-within) {
+    border-color: hsla(0, 0%, 0%, 0.8);
+  }
+
+  .middle-searchbar button[data-tooltip-text="exit note search"] {
+    color: hsla(0, 0%, 100%, 0.525);
+  }
+
+  .middle-searchbar button[data-tooltip-text="exit note search"]:hover {
+    border-color: hsla(0, 0%, 100%, 0.525);
+    background: hsla(0, 0%, 100%, 0.15);
+  }
+
+  .middle-searchbar
+    button[data-tooltip-text="exit note search"]:is(
+      :focus,
+      :focus-visible,
+      :focus-within
+    ) {
+    border-color: hsla(0, 0%, 100%, 0.75);
+  }
+
+  .middle-searchbar
+    button[data-tooltip-text="exit note search"]:is(
+      :focus,
+      :focus-visible,
+      :focus-within,
+      :active
+    ) {
+    color: hsla(0, 0%, 100%, 0.75);
+  }
 }
 
 @media (max-width: 40em) {
-  .toolbar > label[for="search"] {
+  .toolbar .middle-searchbar {
     display: none;
   }
 }
