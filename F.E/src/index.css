@@ -1,20 +1,14 @@
 :root {
-  --orange: #f1b24b;
-  --purple: #6a5acd;
+  --purple: hsl(248, 53%, 58%);
   --bright: #fffffe;
-  --dark: #242424;
-  --h1-clr: #c46352;
-  --danger-red: #dc143c;
-  --heart-red: #f91880;
-  --note-content-clr: #000000b3;
-  --textarea-clr: #ffaf3e;
+  --dark: hsl(0, 0%, 14%);
+  --lite-dark: hsl(0, 0%, 17.5%);
+  --dngr-red: #dc143c;
   --ok-green: #00a550;
-  --scrllbr-thmb: #ad2c15;
-  --scrllbr-thmb-hvr: #651001;
-  --navbar-gap: 0.5em;
+  --navbar-gap: 0.42em;
 
-  --prime-ff: "Raleway", sans-serif;
-  --sec-ff: "Itim", cursive;
+  --prime-ff: "Roboto", sans-serif;
+  --sec-ff: "Amatic SC", cursive;
   font-size: 16px;
   font-weight: 400;
 
@@ -31,35 +25,18 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  outline: 1px solid lime;
 }
 
 body {
   color: var(--bright);
-  background-color: var(--dark);
-  background-image: linear-gradient(45deg, var(--purple), var(--dark) 60%);
+  background: var(--purple);
   font-family: var(--prime-ff);
 }
 
-@media only screen and (prefers-color-scheme: light) {
+@media (prefers-color-scheme: light) {
   body {
     color: var(--dark);
     background-color: var(--bright);
-    background-image: linear-gradient(45deg, var(--purple), var(--bright) 60%);
-  }
-
-  footer a[href="https://github.com/purrrplelipton"]
-  {
-    border-color: var(--dark);
-  }
-
-  footer a[href="https://github.com/purrrplelipton"]:hover
-  {
-    color: var(--bright);
-  }
-
-  footer a[href="https://github.com/purrrplelipton"]:is(:focus, :focus-visible, :focus-within)
-  {
-    outline: 1px solid var(--dark);
-    outline-offset: -1px;
   }
 }

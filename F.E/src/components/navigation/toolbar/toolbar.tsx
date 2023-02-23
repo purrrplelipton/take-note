@@ -1,7 +1,6 @@
 import { useState } from "react";
 
-import { faArrowLeft, faBars } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Menu, ArrowBack } from "@mui/icons-material";
 
 import NavBtn from "../../ui/buttons/nav_btn";
 import NavigationItems from "../navigation_items/navigation_items";
@@ -23,32 +22,33 @@ const Toolbar = ({ toggleMenu }: { toggleMenu: Function }) => {
             <NavBtn
               clicked={() => toggleMenu()}
               ariaLabel={"Main Menu"}
-              tooltipText={"Main Menu"}
               className={""}
             >
-              <FontAwesomeIcon icon={faBars} />
+              <Menu />
             </NavBtn>
           </li>
           <li>
             <Logo />
           </li>
+          <li>
+            <label htmlFor={"search"}>
+              <input
+                type={"search"}
+                name={"center-searchbar"}
+                id={"center-searchbar"}
+                placeholder={"Search your notes"}
+              />
+              <NavBtn
+                className={""}
+                ariaLabel={"exit note search"}
+                clicked={() => setState(false)}
+              >
+                <ArrowBack />
+              </NavBtn>
+            </label>
+          </li>
         </ul>
-        <label htmlFor={"search"} className={style.middleSearchbar}>
-          <input
-            type={"search"}
-            name={"search"}
-            id={"centre-searchbar"}
-            placeholder={"Search notes..."}
-          />
-          <NavBtn
-            className={""}
-            ariaLabel={"exit note search"}
-            tooltipText={"exit note search"}
-            clicked={() => setState(false)}
-          >
-            <FontAwesomeIcon icon={faArrowLeft} />
-          </NavBtn>
-        </label>
+
         <nav>
           <NavigationItems />
         </nav>

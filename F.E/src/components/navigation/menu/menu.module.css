@@ -1,12 +1,15 @@
 .side-menu {
-  background: var(--dark);
-  width: 65%;
-  max-width: 75%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 70%;
   height: 100%;
-  transition: transform 0.25s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-  position: relative;
-  z-index: 3;
-  box-shadow: 1px 5px 10px hsla(0, 0%, 100%, 0.4);
+  background: var(--lite-dark);
+  padding: 0.5em;
+  padding-left: 0;
+  transition: transform 0.25s ease-out;
+  z-index: 4;
 }
 
 .hide {
@@ -17,23 +20,27 @@
   box-shadow: none;
 }
 
-.side-menu.hide :is(a, button) {
+.side-menu.hide :is(a, button, footer) {
   visibility: hidden;
 }
 
-.side-menu :is(a, button) {
+.side-menu a:has(i) {
+  padding: var(--navbar-gap) calc(1.5 * var(--navbar-gap));
+}
+
+.side-menu :is(a, button):not(:has(i)) {
   width: 100%;
   text-decoration: none;
-  background: hsla(0, 0%, 0%, 0);
+  background: transparent;
   color: inherit;
   display: flex;
   align-items: center;
-  gap: var(--navbar-gap);
+  gap: calc(1.75 * var(--navbar-gap));
+  font-size: 1.5em;
   font-family: var(--sec-ff);
-  font-size: 1.125em;
-  padding: calc(0.6 * var(--navbar-gap)) var(--navbar-gap);
+  padding: var(--navbar-gap) calc(1.5 * var(--navbar-gap));
   border-radius: 0 3.5em 3.5em 0;
-  border: 1px solid transparent;
+  border: 2px solid transparent;
   transition: all 0.15s ease-out;
   outline: none;
 }
@@ -42,65 +49,111 @@
   cursor: pointer;
 }
 
-.side-menu :is(a, button):active {
+.side-menu :is(a, button):not(:has(i)):active {
   background: hsla(248, 53%, 58%, 0.4);
 }
 
-.side-menu :is(a, button):hover {
+.side-menu :is(a, button):not(:has(i)):hover {
   background: hsla(0, 0%, 100%, 0.1);
 }
 
-.side-menu :is(a, button):is(:focus, :focus-visible, :focus-within) {
+.side-menu
+  :is(a, button):not(:has(i)):is(:active, :hover, :focus)
+  :is(svg, span) {
+  opacity: 1;
+}
+
+.side-menu :is(a, button):not(:has(i)):is(:focus) {
   border-color: hsla(0, 0%, 100%, 0.6);
 }
 
-.side-menu :is(a, button) svg {
+.side-menu :is(a, button):not(:has(i)) svg {
   opacity: 0.6;
-  padding: calc(0.8 * var(--navbar-gap)) var(--navbar-gap);
+  margin: calc(0.4 * var(--navbar-gap));
+  transition: opacity 0.15s linear;
 }
 
-.side-menu :is(a, button):active svg {
+.side-menu :is(a, button):not(:has(i)) span {
+  transition: opacity 0.175s linear;
   opacity: 0.9;
-}
-
-.side-menu :is(a, button) span {
-  font-size: 0.85em;
   user-select: none;
   pointer-events: none;
 }
 
+.side-menu footer {
+  position: fixed;
+  padding: 0.2em 0.5em;
+  left: 0;
+  bottom: 0;
+  font-size: 0.7em;
+  pointer-events: none;
+  transition: all 0.125s linear;
+  display: flex;
+  align-items: center;
+  gap: var(--navbar-gap);
+}
+
+.side-menu footer svg {
+  font-size: 1.5em;
+  color: #f91880;
+}
+
+.side-menu footer a[href="https://github.com/purrrplelipton"]
+{
+  all: unset;
+  text-decoration: solid line-through;
+  color: inherit;
+  pointer-events: initial;
+}
+
+.side-menu footer a[href="https://github.com/purrrplelipton"]:hover
+{
+  text-decoration: solid underline;
+}
+
+.side-menu footer a[href="https://github.com/purrrplelipton"]:is(:focus)
+{
+  outline: 1px solid var(--bright);
+  outline-offset: -1px;
+}
+
 @media (prefers-color-scheme: light) {
   .side-menu {
-    /* background: var(--bright); */
-    box-shadow: 1px 5px 10px hsla(0, 0%, 0%, 0.4);
+    background: var(--purple);
+  }
+  .side-menu :is(a, button):not(:has(i)):active {
+    background: hsla(0, 0%, 100%, 0.4);
   }
 
-  .side-menu :is(a, button):hover {
+  .side-menu :is(a, button):not(:has(i)):hover {
     background: hsla(0, 0%, 0%, 0.1);
   }
 
-  .side-menu :is(a, button):is(:focus, :focus-visible, :focus-within) {
+  .side-menu :is(a, button):not(:has(i)):is(:focus) {
     border-color: hsla(0, 0%, 0%, 0.4);
-  }
-}
-
-@media (prefers-color-scheme: light) and (min-width: 40em) {
-  .side-menu {
-    box-shadow: 1px 5px 10px hsla(0, 0%, 0%, 0.4) !important;
   }
 }
 
 @media (min-width: 40em) {
   .side-menu {
-    width: 22%;
-    background: transparent !important;
+    position: static;
+    width: 20em;
+    background: none;
+  }
+
+  .side-menu a:has(i) {
+    display: none;
   }
 
   .hide {
-    transform: translateX(0) !important;
+    transform: translateX(0);
   }
 
-  .side-menu.hide :is(a, button) {
+  .side-menu.hide :is(a, button, footer) {
     visibility: visible !important;
+  }
+
+  .side-menu button[aria-label="notes settings"] {
+    display: none;
   }
 }

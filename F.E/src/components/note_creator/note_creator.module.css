@@ -1,0 +1,80 @@
+.mode-section {
+  width: 100%;
+  padding: 0.5em 0.7em;
+  background: var(--lite-dark);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mode-section ul {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  gap: calc(1.25 * var(--navbar-gap));
+}
+
+.mode-section button {
+  all: unset;
+  display: grid;
+  place-items: center;
+  padding: 0.4em;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  transition: all 0.15s ease;
+}
+
+.mode-section button:is(:hover, :active) {
+  background: hsla(0, 0%, 100%, 0.2);
+}
+
+.mode-section button:is(:focus) {
+  border-color: aqua;
+}
+
+.mode-section button svg {
+  font-size: 1.5em;
+  opacity: 0.6;
+  transition: opacity 0.15s linear;
+}
+
+.mode-section button:is(:active, :hover, :focus) svg {
+  opacity: 1;
+}
+
+.mode-section > button {
+  position: absolute;
+  right: 0.5em;
+  top: 0;
+  transform: translateY(calc(-40% + 2px));
+  font-size: 1.8em;
+  padding: 0.4em;
+  background: var(--lite-dark);
+  border: 4px solid var(--purple);
+}
+
+.mode-section > button svg {
+  opacity: 0.8;
+}
+
+.mode-section > button:is(:hover, :active) {
+  background: hsl(0, 0%, 20%);
+}
+
+@media (prefers-color-scheme: light) {
+  .mode-section {
+    background: var(--purple);
+  }
+
+  .mode-section > button {
+    border-color: var(--bright);
+    background: var(--purple);
+  }
+
+  .mode-section > button:is(:hover, :active) {
+    background: hsl(248, 53%, 60%);
+  }
+}

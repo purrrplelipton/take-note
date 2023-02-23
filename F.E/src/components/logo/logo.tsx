@@ -1,10 +1,10 @@
-import { faPenToSquare } from "@fortawesome/free-regular-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import NavLink from "../ui/buttons/nav_link";
 
+import style from "./logo.module.css";
+
 const Logo = () => (
-  <NavLink to={"/"} target={"self"}>
-    <FontAwesomeIcon icon={faPenToSquare} />
+  <NavLink className={style.logoStyle} to={"/"} target={"self"}>
+    <i className={"fi fi-rs-notebook"}></i>
     <span>Take Note</span>
   </NavLink>
 );

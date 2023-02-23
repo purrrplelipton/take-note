@@ -1,14 +1,17 @@
 import { Fragment } from "react";
 
-import { faBell, faLightbulb } from "@fortawesome/free-regular-svg-icons";
 import {
-  faArchive,
-  faHeart,
-  faPencil,
-  faTrashCan,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+  Lightbulb,
+  Archive,
+  Notifications,
+  Edit,
+  Delete,
+  Settings,
+  Favorite,
+} from "@mui/icons-material";
+
 import Backdrop from "../../ui/backdrop/backdrop";
+import Logo from "../../logo/logo";
 import NavBtn from "../../ui/buttons/nav_btn";
 import NavLink from "../../ui/buttons/nav_link";
 
@@ -28,38 +31,46 @@ const Menu = ({
     <Fragment>
       <Backdrop visible={showMenu} hideBackdrop={() => closeMenu()} />{" "}
       <nav className={menuClasses.join(" ")}>
-        <NavLink to={"#notes"} target={"_self"}>
-          <FontAwesomeIcon icon={faLightbulb} />
+        <Logo />
+        <NavLink className={""} to={"#notes"} target={"_self"}>
+          <Lightbulb />
           <span>Notes</span>
         </NavLink>
-        <NavLink to={"#reminders"} target={"_self"}>
-          <FontAwesomeIcon icon={faBell} />
+        <NavLink className={""} to={"#reminders"} target={"_self"}>
+          <Notifications />
           <span>Reminders</span>
         </NavLink>
-        <NavBtn
-          className={""}
-          clicked={() => null}
-          tooltipText={"Edit labels"}
-          ariaLabel={"Edit labels"}
-        >
-          <FontAwesomeIcon icon={faPencil} />
+        <NavBtn className={""} clicked={() => null} ariaLabel={"Edit labels"}>
+          <Edit />
           <span>Edit labels</span>
         </NavBtn>
-        <NavLink to={"#archive"} target={"_self"}>
-          <FontAwesomeIcon icon={faArchive} />
+        <NavLink className={""} to={"#archive"} target={"_self"}>
+          <Archive />
           <span>Archive</span>
         </NavLink>
-        <NavLink to={"#bin"} target={"_self"}>
-          <FontAwesomeIcon icon={faTrashCan} />
-          <span>Bin</span>
+        <NavLink className={""} to={"#bin"} target={"_self"}>
+          <Delete />
+          <span>Trash</span>
         </NavLink>
+        <NavBtn
+          clicked={() => null}
+          className={""}
+          ariaLabel={"notes settings"}
+        >
+          <Settings />
+          <span>Settings</span>
+        </NavBtn>
+        <footer>
+          made with <Favorite /> by{" "}
+          <NavLink
+            className={""}
+            to={"https://github.com/purrrplelipton"}
+            target={"_blank"}
+          >
+            Toby
+          </NavLink>
+        </footer>
       </nav>
-      <footer>
-        made with <FontAwesomeIcon icon={faHeart} /> by{" "}
-        <NavLink to={"https://github.com/purrrplelipton"} target={"_blank"}>
-          Toby
-        </NavLink>
-      </footer>
     </Fragment>
   );
 };
