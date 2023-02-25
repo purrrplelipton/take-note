@@ -6,10 +6,10 @@ import {
   NoteAddOutlined,
 } from "@mui/icons-material";
 
-import style from "./note_creator.module.css";
-import NavBtn from "../ui/buttons/nav_btn";
+import style from "./options_bar.module.css";
+import NavBtn from "../../ui/buttons/nav_btn";
 
-const NoteCreator = () => {
+const Options_Bar = () => {
   return (
     <section className={style.modeSection}>
       <ul>
@@ -53,4 +53,4 @@ const NoteCreator = () => {
   );
 };
 
-export default NoteCreator;
+export default Options_Bar;

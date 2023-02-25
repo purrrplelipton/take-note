@@ -1,4 +1,6 @@
-import { Fragment } from "react";
+import { Fragment, useContext } from "react";
+
+import { GlobalContext } from "../../../context/global_context";
 
 import {
   Lightbulb,
@@ -17,19 +19,14 @@ import NavLink from "../../ui/buttons/nav_link";
 
 import style from "./menu.module.css";
 
-const Menu = ({
-  showMenu,
-  closeMenu,
-}: {
-  showMenu: boolean;
-  closeMenu: Function;
-}) => {
+const Menu = () => {
+  const { states, setStates } = useContext(GlobalContext);
   const menuClasses = [style.sideMenu, style.hide];
-  showMenu ? menuClasses.pop() : null;
+  states.visible ? menuClasses.pop() : null;
 
   return (
     <Fragment>
-      <Backdrop visible={showMenu} hideBackdrop={() => closeMenu()} />{" "}
+      <Backdrop />
       <nav className={menuClasses.join(" ")}>
         <Logo />
         <NavLink className={""} to={"#notes"} target={"_self"}>
@@ -55,7 +52,7 @@ const Menu = ({
         <NavBtn
           clicked={() => null}
           className={""}
-          ariaLabel={"notes settings"}
+          ariaLabel={"Notes settings"}
         >
           <Settings />
           <span>Settings</span>

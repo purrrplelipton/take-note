@@ -1,0 +1,56 @@
+.note {
+  border: 2px solid hsl(0, 0%, 85%);
+  border-radius: 0.5em;
+  padding: 0.6em 0.5em;
+  transition: all 0.2s ease-in-out;
+}
+
+.note:is(:hover, :active, :focus) {
+  border-color: #fff;
+  background: hsl(0, 0%, 0%, 0.1);
+}
+
+.note section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.note section h2 {
+  font-size: 1.3em;
+  font-weight: 400;
+  text-decoration: underline;
+}
+
+.note section button {
+  all: unset;
+  background: transparent;
+  border: 2px solid transparent;
+  display: grid;
+  place-items: center;
+  padding: 0.5em;
+  border-radius: 50%;
+  transition: all 0.15s ease-in-out;
+}
+
+.note section button:is(:hover, :active) {
+  background: hsl(0, 0%, 0%, 0.2);
+}
+
+.note section button:is(:focus) {
+  border-color: aqua;
+}
+
+.note section button svg {
+  opacity: 0.9;
+}
+
+.note section button:is(:hover, :active, :focus) svg {
+  opacity: 1;
+}
+
+.note p {
+  font-size: 1.125em;
+  font-family: var(--sec-ff);
+  font-weight: 700;
+}

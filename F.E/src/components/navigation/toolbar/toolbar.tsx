@@ -1,59 +1,56 @@
-import { useState } from "react";
+import { useContext } from "react";
 
-import { Menu, ArrowBack } from "@mui/icons-material";
+import { GlobalContext } from "../../../context/global_context";
+
+import { Menu, Close, ArrowBack } from "@mui/icons-material";
 
 import NavBtn from "../../ui/buttons/nav_btn";
 import NavigationItems from "../navigation_items/navigation_items";
 import Logo from "../../logo/logo";
-import Backdrop from "../../ui/backdrop/backdrop";
-import GlobalContext from "../../../context/crt_cntxt";
 
 import style from "./toolbar.module.css";
 
-const Toolbar = ({ toggleMenu }: { toggleMenu: Function }) => {
-  const [state, setState] = useState(false);
+const Toolbar = () => {
+  const { states, setStates } = useContext(GlobalContext);
 
   return (
-    <GlobalContext.Provider value={{ state, setState }}>
-      <header className={style.toolbar}>
-        <Backdrop visible={state} hideBackdrop={() => setState(false)} />
-        <ul>
-          <li>
+    <header className={style.toolbar}>
+      <ul>
+        <li>
+          <NavBtn
+            clicked={() => setStates({ visible: !states.visible })}
+            ariaLabel={"Main Menu"}
+            className={""}
+          >
+            {states.visible ? <Close /> : <Menu />}
+          </NavBtn>
+        </li>
+        <li>
+          <Logo />
+        </li>
+        <li>
+          <label htmlFor={"search"}>
+            <input
+              type={"search"}
+              name={"center-searchbar"}
+              id={"center-searchbar"}
+              placeholder={"Search your notes"}
+            />
             <NavBtn
-              clicked={() => toggleMenu()}
-              ariaLabel={"Main Menu"}
               className={""}
+              ariaLabel={"exit note search"}
+              clicked={() => null}
             >
-              <Menu />
+              <ArrowBack />
             </NavBtn>
-          </li>
-          <li>
-            <Logo />
-          </li>
-          <li>
-            <label htmlFor={"search"}>
-              <input
-                type={"search"}
-                name={"center-searchbar"}
-                id={"center-searchbar"}
-                placeholder={"Search your notes"}
-              />
-              <NavBtn
-                className={""}
-                ariaLabel={"exit note search"}
-                clicked={() => setState(false)}
-              >
-                <ArrowBack />
-              </NavBtn>
-            </label>
-          </li>
-        </ul>
+          </label>
+        </li>
+      </ul>
 
-        <nav>
-          <NavigationItems />
-        </nav>
-      </header>
-    </GlobalContext.Provider>
+      <nav>
+        <NavigationItems />
+      </nav>
+    </header>
   );
 };
 

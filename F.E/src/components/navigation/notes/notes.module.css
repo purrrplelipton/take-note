@@ -1,0 +1,11 @@
+.notes-wrapper {
+  width: 96%;
+  margin: 4.375em auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5em;
+}
+
+.notes-wrapper.single-column-view {
+  grid-template-columns: 1fr;
+}

@@ -1,14 +1,17 @@
+import { useContext } from "react";
+
+import { GlobalContext } from "../../../context/global_context";
+
 import style from "./backdrop.module.css";
 
-const Backdrop = ({
-  visible,
-  hideBackdrop,
-}: {
-  visible: boolean;
-  hideBackdrop: Function;
-}) =>
-  visible ? (
-    <i className={style.backdrop} onClick={() => hideBackdrop()}></i>
+function Backdrop() {
+  const { states, setStates } = useContext(GlobalContext);
+  return states.visible ? (
+    <i
+      className={style.backdrop}
+      onClick={() => setStates({ visible: false })}
+    ></i>
   ) : null;
+}
 
 export default Backdrop;
